@@ -1,6 +1,7 @@
 package Spring_data.controller;
 
 import Spring_data.dto.StudentDTO;
+import Spring_data.enums.Gender;
 import Spring_data.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -41,6 +42,24 @@ public class StudentController {
     @GetMapping("/by-name/{name}")
     private ResponseEntity<List<StudentDTO>> byName(@PathVariable("name") String name) {
         return ResponseEntity.ok(studentService.getbyName(name));
+    }
+    @GetMapping("/by-surname/{surname}")
+    private ResponseEntity<List<StudentDTO>> bySurname(@PathVariable("surname") String surname) {
+        return ResponseEntity.ok(studentService.getbySurname(surname));
+    }
+
+    @GetMapping("/by-age/{age}")
+    private ResponseEntity<List<StudentDTO>> byAge(@PathVariable("age") Integer age) {
+        return ResponseEntity.ok(studentService.getbyAge(age));
+    }
+    @GetMapping("/by-level/{level}")
+    private ResponseEntity<List<StudentDTO>> byLevel(@PathVariable("level") Integer level) {
+        return ResponseEntity.ok(studentService.getbyLevel(level));
+    }
+
+    @GetMapping("/by-gender/{gender}")
+    private ResponseEntity<List<StudentDTO>> byGender(@PathVariable("gender") Gender gender) {
+        return ResponseEntity.ok(studentService.getbyGender(gender));
     }
 
 }

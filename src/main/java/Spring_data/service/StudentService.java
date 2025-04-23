@@ -2,6 +2,7 @@ package Spring_data.service;
 
 import Spring_data.dto.StudentDTO;
 import Spring_data.entity.StudentEntity;
+import Spring_data.enums.Gender;
 import Spring_data.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -67,6 +68,39 @@ public class StudentService {
 
     public List<StudentDTO> getbyName(String name) {
         Iterable<StudentEntity> iterable = studentRepository.findByName(name) ;
+        List<StudentDTO> list = new LinkedList<>();
+        for (StudentEntity entity : iterable) {
+            list.add(toDTO(entity));
+        }
+        return list;
+    }
+    public List<StudentDTO> getbySurname(String surname) {
+        Iterable<StudentEntity> iterable = studentRepository.findBySurname(surname) ;
+        List<StudentDTO> list = new LinkedList<>();
+        for (StudentEntity entity : iterable) {
+            list.add(toDTO(entity));
+        }
+        return list;
+    }
+
+    public List<StudentDTO> getbyAge(Integer age) {
+        Iterable<StudentEntity> iterable = studentRepository.findByAge(age) ;
+        List<StudentDTO> list = new LinkedList<>();
+        for (StudentEntity entity : iterable) {
+            list.add(toDTO(entity));
+        }
+        return list;
+    }
+    public List<StudentDTO> getbyLevel(Integer level) {
+        Iterable<StudentEntity> iterable = studentRepository.findByLevel(level) ;
+        List<StudentDTO> list = new LinkedList<>();
+        for (StudentEntity entity : iterable) {
+            list.add(toDTO(entity));
+        }
+        return list;
+    }
+    public List<StudentDTO> getbyGender(Gender gender) {
+        Iterable<StudentEntity> iterable = studentRepository.findByGender(gender) ;
         List<StudentDTO> list = new LinkedList<>();
         for (StudentEntity entity : iterable) {
             list.add(toDTO(entity));

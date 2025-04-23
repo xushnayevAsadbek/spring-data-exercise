@@ -34,3 +34,15 @@ DELETE localhost:8080/student/14
 ### Student by name
 GET localhost:8080/student/by-name/Ali
 
+### Student by surname
+GET localhost:8080/student/by-surname/Aliyev
+
+### Student by age
+GET localhost:8080/student/by-age/20
+
+### Student by level
+GET localhost:8080/student/by-level/2
+
+### Student by gender
+GET localhost:8080/student/by-gender/MALE
+
