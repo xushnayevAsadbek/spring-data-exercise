@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CourseService {
@@ -35,6 +36,55 @@ public class CourseService {
             course.add(toDTO(entity));
         }
         return course;
+    }
+
+    public CourseDTO getById(Integer id) {
+        Optional<CourseEntity> optional = courseRepository.findById(id);
+        if (optional.isEmpty()){
+            return null;}
+        CourseEntity entity = optional.get();
+        return toDTO(entity);
+    }
+    public  CourseDTO upDate(Integer id , CourseDTO dto){
+        Optional<CourseEntity> optional = courseRepository.findById(id);
+        if (optional.isEmpty()){
+            return null;
+        }
+        CourseEntity entity = optional.get();
+        entity.setName(dto.getName());
+        entity.setPrice(dto.getPrice());
+        entity.setDuration(dto.getDuration());
+        courseRepository.save(entity);
+        return dto;
+    }
+    public void delete (Integer id) {
+        courseRepository.deleteById(id);
+    }
+    public  List<CourseDTO>  getbyName(String name){
+        Iterable<CourseEntity> iterable = courseRepository.findByName(name);
+        List<CourseDTO> course = new LinkedList<>();
+        for (CourseEntity entity : iterable) {
+            course.add(toDTO(entity));
+        }
+        return course;
+
+    }
+    public List<CourseDTO> getByPrice(Double price) {
+        Iterable<CourseEntity> iterable = courseRepository.findByPrice(price);
+        List<CourseDTO> course = new LinkedList<>();
+        for (CourseEntity entity : iterable){
+            course.add(toDTO(entity));
+        }
+        return course;
+
+    }
+    public List<CourseDTO> getByDuration(Integer duration) {
+        Iterable<CourseEntity> iterable = courseRepository.findByDuration(duration);
+        List<CourseDTO> course = new LinkedList<>();
+        for (CourseEntity entity : iterable){
+            course.add(toDTO(entity));
+        }
+    return course;
     }
     public CourseDTO toDTO(CourseEntity entity) {
         CourseDTO dto = new CourseDTO();

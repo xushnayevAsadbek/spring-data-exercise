@@ -3,10 +3,33 @@ POST localhost:8080/course
 Content-Type: application/json
 
 {
-  "name": "Ona-tili",
+  "name": "informatika",
   "price": 1000,
   "duration": 1
 }
 
 ### Course all
 GET localhost:8080/course
+
+###Course  byId
+GET localhost:8080/course/4
+
+###  Update course
+PUT localhost:8080/course/4
+Content-Type: application/json
+
+{
+  "name": "Ingliz tili",
+  "price": 4000,
+  "duration": 3
+}
+
+### delete course
+DELETE localhost:8080/course/4
+
+### course by name
+GET localhost:8080/course/by-name/Fizika
+### course by price
+GET localhost:8080/course/by-price?price=2000
+### course by duration
+GET localhost:8080/course/by-duration?duration=3
