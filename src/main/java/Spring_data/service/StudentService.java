@@ -29,7 +29,6 @@ public class StudentService {
         studentRepository.save(entity);
         dto.setId(entity.getId());
         return dto;
-
     }
 
     public List<StudentDTO> getAll() {
@@ -113,6 +112,17 @@ public class StudentService {
     public List<StudentDTO> getByGivenDate(LocalDate givenDate) {
         LocalDateTime from = LocalDateTime.of(givenDate , LocalTime.MIN);
         LocalDateTime to = LocalDateTime.of(givenDate , LocalTime.MAX);
+        Iterable<StudentEntity> iterable = studentRepository.findByCreatedDateBetween(from, to) ;
+        List<StudentDTO> list = new LinkedList<>();
+        for (StudentEntity entity : iterable) {
+            list.add(toDTO(entity));
+        }
+        return list;
+    }
+
+    public List<StudentDTO> getByGivenDates(LocalDate fromDate , LocalDate toDate ) {
+        LocalDateTime from = LocalDateTime.of(fromDate , LocalTime.MIN);
+        LocalDateTime to = LocalDateTime.of(toDate , LocalTime.MAX);
         Iterable<StudentEntity> iterable = studentRepository.findByCreatedDateBetween(from, to) ;
         List<StudentDTO> list = new LinkedList<>();
         for (StudentEntity entity : iterable) {

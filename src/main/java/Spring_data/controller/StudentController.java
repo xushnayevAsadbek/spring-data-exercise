@@ -67,4 +67,10 @@ public class StudentController {
         return ResponseEntity.ok(studentService.getByGivenDate(date));
     }
 
+    @GetMapping("/given-dates")
+    private ResponseEntity<List<StudentDTO>> byDates(@RequestParam("fromDate") LocalDate fromDate,
+                                                    @RequestParam("toDate") LocalDate toDate) {
+        return ResponseEntity.ok(studentService.getByGivenDates(fromDate , toDate));
+    }
+
 }

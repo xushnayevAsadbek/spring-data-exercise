@@ -3,10 +3,10 @@ POST localhost:8080/student
 Content-Type: application/json
 
 {
-  "name": "Valibek",
+  "name": "Anvar",
   "surname": "Aliyev",
-  "level": 3,
-  "age": 22,
+  "level": 2,
+  "age": 19,
   "gender": "MALE"
 }
 
@@ -14,17 +14,17 @@ Content-Type: application/json
 GET localhost:8080/student
 
 ###Student  byId
-GET localhost:8080/student/12
+GET localhost:8080/student/18
 
 ### Student update
 PUT localhost:8080/student/14
 Content-Type: application/json
 
 {
-  "name": "Valibek",
+  "name": "Anvar",
   "surname": "Aliyev",
-  "level": 3,
-  "age": 20,
+  "level": 2,
+  "age": 19,
   "gender": "MALE"
 }
 
@@ -32,7 +32,7 @@ Content-Type: application/json
 DELETE localhost:8080/student/16
 
 ### Student by name
-GET localhost:8080/student/by-name/Ali
+GET localhost:8080/student/by-name/Anvar
 
 ### Student by surname
 GET localhost:8080/student/by-surname/Aliyev
@@ -48,3 +48,6 @@ GET localhost:8080/student/by-gender/MALE
 
 ### Student by date
 GET localhost:8080/student/given-date?date=2025-04-24
+
+### Student by dates
+GET localhost:8080/student/given-dates?fromDate=2025-04-23&toDate=2025-04-24
