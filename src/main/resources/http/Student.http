@@ -5,8 +5,8 @@ Content-Type: application/json
 {
   "name": "Valibek",
   "surname": "Aliyev",
-  "level": 2,
-  "age": 21,
+  "level": 3,
+  "age": 22,
   "gender": "MALE"
 }
 
@@ -23,13 +23,13 @@ Content-Type: application/json
 {
   "name": "Valibek",
   "surname": "Aliyev",
-  "level": 2,
+  "level": 3,
   "age": 20,
   "gender": "MALE"
 }
 
 ### Student delete
-DELETE localhost:8080/student/14
+DELETE localhost:8080/student/16
 
 ### Student by name
 GET localhost:8080/student/by-name/Ali
@@ -46,3 +46,5 @@ GET localhost:8080/student/by-level/2
 ### Student by gender
 GET localhost:8080/student/by-gender/MALE
 
+### Student by date
+GET localhost:8080/student/given-date?date=2025-04-24

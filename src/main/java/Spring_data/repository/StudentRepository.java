@@ -4,6 +4,8 @@ import Spring_data.entity.StudentEntity;
 import Spring_data.enums.Gender;
 import org.springframework.data.repository.CrudRepository;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface StudentRepository extends CrudRepository<StudentEntity, Integer> {
@@ -16,5 +18,5 @@ public interface StudentRepository extends CrudRepository<StudentEntity, Integer
     List<StudentEntity> findByLevel(Integer level);
 
     List<StudentEntity> findByGender(Gender gender);
-
+    List<StudentEntity> findByCreatedDateBetween(LocalDateTime from, LocalDateTime to);
 }

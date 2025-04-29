@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -60,6 +61,10 @@ public class StudentController {
     @GetMapping("/by-gender/{gender}")
     private ResponseEntity<List<StudentDTO>> byGender(@PathVariable("gender") Gender gender) {
         return ResponseEntity.ok(studentService.getbyGender(gender));
+    }
+    @GetMapping("/given-date")
+    private ResponseEntity<List<StudentDTO>> byDate(@RequestParam("date") LocalDate date) {
+        return ResponseEntity.ok(studentService.getByGivenDate(date));
     }
 
 }

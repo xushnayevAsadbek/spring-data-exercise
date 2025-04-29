@@ -7,7 +7,9 @@ import Spring_data.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -107,6 +109,18 @@ public class StudentService {
         }
         return list;
     }
+
+    public List<StudentDTO> getByGivenDate(LocalDate givenDate) {
+        LocalDateTime from = LocalDateTime.of(givenDate , LocalTime.MIN);
+        LocalDateTime to = LocalDateTime.of(givenDate , LocalTime.MAX);
+        Iterable<StudentEntity> iterable = studentRepository.findByCreatedDateBetween(from, to) ;
+        List<StudentDTO> list = new LinkedList<>();
+        for (StudentEntity entity : iterable) {
+            list.add(toDTO(entity));
+        }
+        return list;
+    }
+
     public StudentDTO toDTO(StudentEntity entity) {
         StudentDTO dto = new StudentDTO();
         dto.setId(entity.getId());
